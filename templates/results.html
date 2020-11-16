@@ -1,0 +1,19 @@
+{% extends 'layout.html'%} {% block title %}{{super()}}{% endblock %} {% block content %}
+<p>There were {{l}} tables in this webpage</p>
+
+
+{% for t in tables %}
+
+<div class="sub_container" id="t_div_{{loop.index}}">
+  <h1>Element {{loop.index}}</h1>
+  <div class="table_container">
+    {{t|safe}}
+  </div>
+  {% if  element_input == "table" %}
+  <button class="btn" onclick="exportTableToCSV(&#39;t_{{loop.index}}.csv&#39;,&#39;#t_div_{{loop.index}} table tr&#39;)">Download CSV</button>
+  {% endif %}
+</div>
+
+
+{% endfor %}
+{% endblock %}

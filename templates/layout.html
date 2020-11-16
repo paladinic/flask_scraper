@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>{% block title %} Flask Scraper {% endblock %}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <script type="text/javascript" src="/static/js/script.js"></script>
+  <link rel="stylesheet" href="/static/css/styles.css"/>
+  <link rel="shortcut icon" href="/static/img/C_LOGO.png"/>
+
+</head>
+<body>
+  <div class="header">
+    <h1 id="header_h1">a Flask Scraper </h1>
+    <a href="https://www.paladinic.com/">
+      <p id="header_p"> by Claudio Paladini</p>
+    </a>
+  </div>
+  <div class="container">
+    <h1>Download tables from the web</h1>
+    <p>This is a web app written in python (flask) to scrape a given web page for tables which are then made available for download.</p>
+    <form method="POST" action="results">
+      <label for="url_input">URL</label>
+      <br>
+      <input type="text" name="url_input" required="" value="{{url_input}}">
+      <br>
+      <label for="element_input">Element</label>
+      <br>
+      <select name="element_input">
+        <optgroup label="allows download">
+          <option value="table">table</option>
+        </optgroup>
+        <optgroup label="doesn't allow download">
+          <option value="a">a</option>
+          <option value="p">p</option>
+          <option value="div">div</option>
+          <option value="h1">h1</option>
+          <option value="h2">h2</option>
+          <option value="h3">h3</option>
+          <option value="h4">h4</option>
+          <option value="h5">h5</option>
+          <option value="h6">h6</option>
+          <option value="title">title</option>
+          <option value="form">formx</option>
+        </optgroup>
+      </select>
+      <br>
+      <label for="property_input">Property</label>
+      <br>
+      <input type="text" name="property_input"  value="{{property_input}}">
+      <br>
+      <input type="submit" class="btn" value="Scrape">
+    </form>
+    {% block content %}
+    {% endblock %}
+
+  </div>
+  <footer>Claudio Palaidni - London - © 2019</footer>
+</body>
+
+</html>
