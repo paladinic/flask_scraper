@@ -16,10 +16,18 @@
     <a href="https://www.paladinic.com/">
       <p id="header_p"> by Claudio Paladini</p>
     </a>
+    <br>
   </div>
   <div class="container">
-    <h1>Download tables from the web</h1>
-    <p>This is a web app written in python (flask) to scrape a given web page for tables which are then made available for download.</p>
+    <h1>Scrape the web</h1>
+    <p>This is a web app written in python (flask) to scrape a given web page for HTML elements.
+      In the case if "tables", these HTML elemtents are then available for download.
+    </p>
+    <a href="https://github.com/paladinic/flask_scraper">
+      <p>
+        The code is available here.
+      </p>
+    </a>
     <form method="POST" action="results">
       <label for="url_input">URL</label>
       <br>
@@ -29,20 +37,72 @@
       <br>
       <select name="element_input">
         <optgroup label="allows download">
+          {% if element_input == "table" %}
+          <option value="table" selected>table</option>
+          {% else %}
           <option value="table">table</option>
+          {% endif %}
         </optgroup>
         <optgroup label="doesn't allow download">
+          {% if element_input == "a" %}
+          <option value="a" selected>a</option>
+          {% else %}
           <option value="a">a</option>
-          <option value="p">p</option>
+          {% endif %}
+
+          {% if element_input == "div" %}
+          <option value="div" selected>div</option>
+          {% else %}
           <option value="div">div</option>
+          {% endif %}
+
+          {% if element_input == "p" %}
+          <option value="p" selected>p</option>
+          {% else %}
+          <option value="p">p</option>
+          {% endif %}
+
+          {% if element_input == "h1" %}
+          <option value="h1" selected>h1</option>
+          {% else %}
           <option value="h1">h1</option>
+          {% endif %}
+
+          {% if element_input == "h2" %}
+          <option value="h2" selected>h2</option>
+          {% else %}
           <option value="h2">h2</option>
+          {% endif %}
+
+          {% if element_input == "h3" %}
+          <option value="h3" selected>h3</option>
+          {% else %}
           <option value="h3">h3</option>
+          {% endif %}
+
+          {% if element_input == "h4" %}
+          <option value="h4" selected>h4</option>
+          {% else %}
           <option value="h4">h4</option>
+          {% endif %}
+
+          {% if element_input == "h5" %}
+          <option value="h5" selected>h5</option>
+          {% else %}
           <option value="h5">h5</option>
+          {% endif %}
+
+          {% if element_input == "h6" %}
+          <option value="h6" selected>h6</option>
+          {% else %}
           <option value="h6">h6</option>
-          <option value="title">title</option>
-          <option value="form">formx</option>
+          {% endif %}
+
+          {% if element_input == "img" %}
+          <option value="img" selected>img</option>
+          {% else %}
+          <option value="img">img</option>
+          {% endif %}
         </optgroup>
       </select>
       <br>
